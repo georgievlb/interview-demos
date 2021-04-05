@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="3b6f2b4b-e5cf-4322-a0f2-16e606c6f6d71" Category="Comment" Bounds="-98.1491672507912,-610.26748752594,244.356666666667,121.72" Label="The &quot;Presentation&quot; layer contains the User Interface, which in this case is the Console. The UI is only concerned with presenting the data to the user and is unaware of other layers except for the Application layer. The only file within the &quot;Presentation&quot; layer is &quot;Program.cs&quot;" UseManualLocation="True" />
+    <Node Id="7a3a4922-f03d-47a8-b8b2-a7602663f0891" Category="Comment" Bounds="-486.149167250791,151.73251247406,245.433333333333,89.8" Label="A the name implies, the &quot;Persistence&quot; layer deals with data persistence. It manages DB connections and communicates with the &quot;Application&quot; layer using the ICountryAggregateManager interface." UseManualLocation="True" />
+    <Node Id="9346b128-1037-42c6-afc9-94bc8b71e89c1" Category="Comment" Bounds="-551.152504767974,-281.887486438751,221.043333333333,41.92" Label="The &quot;Common&quot; layer deals with cross-cutting concerns such as constants." UseManualLocation="True" />
+    <Node Id="Application" Bounds="-15.9999999999999,-221,80.1033333333333,25.96" Label="Application" UseManualLocation="True" />
+    <Node Id="Common" Bounds="-279.409167250791,-208.638768824387,68.9533333333334,25.96" UseManualLocation="True" />
+    <Node Id="Domain" Bounds="-7.42500116825103,-145.678668824387,61.5833333333333,25.96" UseManualLocation="True" />
+    <Node Id="Persistence" Bounds="-147.198334501584,-21.5349750518799,78.7733333333333,25.96" UseManualLocation="True" />
+    <Node Id="Presentation(Program.cs)" Bounds="-18.9999999999999,-302,86.2966666666667,25.96" Label="Presentation" UseManualLocation="True" />
+    <Node Id="TheA" Category="Comment" Bounds="258.850832749209,-364.26748752594,244.833333333333,201.52" Label="The &quot;Application&quot; layer contains the application's Use Cases or in other words the business logic. The &quot;Application&quot; layer has a direct dependency to the &quot;Domain&quot; layer as it needs to work with entities. Currentlly, the only application use case in this project is to get all countries and their population. That is why, all the necessary files are grouped under the Countries folder. The &quot;Application&quot; layer exposes the &quot;ICountryAggregateManager&quot; which can is implemented by the &quot;Persistence&quot; layer." UseManualLocation="True" />
+    <Node Id="a1b2513b-c8bb-4424-b1ec-bae37c0c9ba01" Category="Comment" Bounds="77.8508327492088,163.73251247406,245.696666666667,121.72" Label="The &quot;Domain&quot; layer holds the entities for this application. Entities should have any external dependencies since they are the heart of the application. They are the business objects of the application and are high level abstractions that are very unlikely to change." UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="3b6f2b4b-e5cf-4322-a0f2-16e606c6f6d71" Target="Presentation(Program.cs)" Bounds="24.0570188759006,-488.54748752594,0.0812552334472301,177.54748846845" />
+    <Link Source="7a3a4922-f03d-47a8-b8b2-a7602663f0891" Target="Persistence" Bounds="-307.496461165598,10.0588385041681,176.495862177001,141.673673969892" />
+    <Link Source="9346b128-1037-42c6-afc9-94bc8b71e89c1" Target="Common" Bounds="-377.785461260972,-239.967486438751,90.1866278377734,30.0787713355946" />
+    <Link Source="Application" Target="Common" Bounds="-201.465322368386,-206.179416163057,185.465322368386,8.52310285875561" />
+    <Link Source="Application" Target="Domain" Bounds="23.5665566914103,-195.04,0.36706486074344,40.3617033377834" />
+    <Link Source="Persistence" Target="Application" Bounds="-99.2307846335855,-187.532262436154,109.738315468596,165.997287384274" />
+    <Link Source="Persistence" Target="Common" Bounds="-230.099944563341,-175.419484631098,112.775757643703,153.884509579218" />
+    <Link Source="Persistence" Target="Domain" Bounds="-94.0961522503171,-113.532395422892,97.2104817289396,91.997420371012" />
+    <Link Source="Presentation(Program.cs)" Target="Application" Bounds="24.0778979347382,-276.04,0.0549448636157912,46.0400064090771" />
+    <Link Source="TheA" Target="Application" Bounds="72.9966816511649,-244.492111828965,185.854151098044,28.869324775806" />
+    <Link Source="a1b2513b-c8bb-4424-b1ec-bae37c0c9ba01" Target="Domain" Bounds="33.8101651820492,-111.657007952497,136.682669061211,275.389520426557" />
+  </Links>
+  <Categories>
+    <Category Id="Comment" Label="Comment" Description="Represents a user defined comment on the diagram" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="Comments" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+</DirectedGraph>
