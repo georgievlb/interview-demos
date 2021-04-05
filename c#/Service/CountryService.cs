@@ -22,17 +22,19 @@ namespace Backend.Service
             this.statService = statService;
         }
 
-        public List<CountryDto> GetCountriesFromDataSourceOne()
+        public async Task<List<CountryDto>> GetCountriesFromDataSourceOne()
         {
             var countries = new List<CountryDto>();
 
-            using (DbConnection conn = dbManager.getConnection())
+            using (DbConnection conn = dbManager.GetConnection())
             {
 
                 if (conn == null)
                 {
                     Console.WriteLine("Failed to get connection");
                 }
+
+                await conn.OpenAsync();
 
                 var command = conn.CreateCommand();
 
@@ -45,9 +47,9 @@ FROM Country co
 		ON s.StateId = ci.StateId
 GROUP BY co.CountryName
 ";
-                var rdr = command.ExecuteReader();
+                var rdr = await command.ExecuteReaderAsync();
 
-                while (rdr.Read())
+                while (await rdr.ReadAsync())
                 {
                     countries.Add(new CountryDto
                     {

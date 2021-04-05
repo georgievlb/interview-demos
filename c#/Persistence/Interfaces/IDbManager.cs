@@ -4,6 +4,6 @@ namespace Backend.Persistence.Interfaces
 {
     public interface IDbManager
     {
-        DbConnection getConnection();
+        DbConnection GetConnection();
     }
 }

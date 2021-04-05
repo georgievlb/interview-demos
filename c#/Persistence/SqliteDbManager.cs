@@ -7,12 +7,12 @@ namespace Backend.Persistence
 {
     public class SqliteDbManager : IDbManager
     {
-        public DbConnection getConnection()
+        public DbConnection GetConnection()
         {
             try
             {
-                var connection = new SQLiteConnection("Data Source=Persistence\\citystatecountry.db;Version=3;FailIfMissing=True");
-                return connection.OpenAndReturn();
+                return new SQLiteConnection("Data Source=Persistence\\citystatecountry.db;Version=3;FailIfMissing=True");
+
             }
             catch(SQLiteException ex)
             {

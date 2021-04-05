@@ -1,5 +1,6 @@
 ﻿using Backend.Service.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace Backend
 {
@@ -12,9 +13,9 @@ namespace Backend
             this.countryService = countryService;
         }
 
-        public async void Run()
+        public async Task Run()
         {
-            var countries1 = countryService.GetCountriesFromDataSourceOne();
+            var countries1 = await countryService.GetCountriesFromDataSourceOne();
 
             foreach (var country in countries1)
             {

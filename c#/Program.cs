@@ -3,6 +3,7 @@ using Backend.Persistence;
 using Backend.Persistence.Interfaces;
 using Backend.Service;
 using Backend.Service.Interfaces;
+using System.Threading.Tasks;
 
 namespace Backend
 {
@@ -19,9 +20,9 @@ namespace Backend
 
             return builder.Build();
         }
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            CompositeRoot().Resolve<Application>().Run();
+            await CompositeRoot().Resolve<Application>().Run();
         }
     }
 }

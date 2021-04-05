@@ -6,7 +6,7 @@ namespace Backend.Service.Interfaces
 {
     public interface ICountryService
     {
-        List<CountryDto> GetCountriesFromDataSourceOne();
+        Task<List<CountryDto>> GetCountriesFromDataSourceOne();
 
         Task<List<CountryDto>> GetCountriesFromDataSourceTwo();
     }
