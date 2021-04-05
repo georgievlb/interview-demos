@@ -14,6 +14,8 @@ namespace Backend
             builder.RegisterType<Application>();
             builder.RegisterType<SqliteDbManager>().As<IDbManager>();
             builder.RegisterType<ConcreteStatService>().As<IStatService>();
+            builder.RegisterType<CountryService>().As<ICountryService>();
+            builder.RegisterType<CountryNameMappingService>().As<ICountryNameMappingService>();
 
             return builder.Build();
         }

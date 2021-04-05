@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend.csproj", "{5FFBD76F-CE46-41FE-AEF4-AE2A9D626606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend.Common", "Backend.Common\Backend.Common.csproj", "{13ABC9FD-FCBE-44F6-A0C0-26094BE8B8A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{5FFBD76F-CE46-41FE-AEF4-AE2A9D626606}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FFBD76F-CE46-41FE-AEF4-AE2A9D626606}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FFBD76F-CE46-41FE-AEF4-AE2A9D626606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13ABC9FD-FCBE-44F6-A0C0-26094BE8B8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13ABC9FD-FCBE-44F6-A0C0-26094BE8B8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13ABC9FD-FCBE-44F6-A0C0-26094BE8B8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13ABC9FD-FCBE-44F6-A0C0-26094BE8B8A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4D02CD5-7A51-49A1-8589-6D5632C16DB9}
 	EndGlobalSection
 EndGlobal

@@ -1,31 +1,26 @@
-﻿using Backend.Persistence.Interfaces;
-using Backend.Service.Interfaces;
+﻿using Backend.Service.Interfaces;
 using System;
-using System.Data.Common;
 
 namespace Backend
 {
     public class Application
     {
-        private readonly IDbManager dbManager;
         private readonly IStatService statService;
+        private readonly ICountryService countryService;
 
-        public Application(IDbManager dbManager, IStatService statService)
+        public Application(IStatService statService, ICountryService countryService)
         {
-            this.dbManager = dbManager;
             this.statService = statService;
+            this.countryService = countryService;
         }
 
         public void Run()
         {
-            Console.WriteLine("Started");
-            Console.WriteLine("Getting DB Connection...");
+            var countries = countryService.GetCountriesFromDataSourceOne();
 
-            DbConnection conn = dbManager.getConnection();
-
-            if (conn == null)
+            foreach (var country in countries)
             {
-                Console.WriteLine("Failed to get connection");
+                Console.WriteLine($"Name: {country.Name}, Population: {country.Population}");
             }
         }
     }
