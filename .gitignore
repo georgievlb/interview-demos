@@ -2,3 +2,7 @@
 .vscode
 *.iml
 .idea
+/c#/packages
+/c#/obj/Debug
+/c#/bin/Debug
+/c#/.vs/Backend/v16
