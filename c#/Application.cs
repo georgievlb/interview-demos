@@ -5,20 +5,27 @@ namespace Backend
 {
     public class Application
     {
-        private readonly IStatService statService;
         private readonly ICountryService countryService;
 
-        public Application(IStatService statService, ICountryService countryService)
+        public Application(ICountryService countryService)
         {
-            this.statService = statService;
             this.countryService = countryService;
         }
 
-        public void Run()
+        public async void Run()
         {
-            var countries = countryService.GetCountriesFromDataSourceOne();
+            var countries1 = countryService.GetCountriesFromDataSourceOne();
 
-            foreach (var country in countries)
+            foreach (var country in countries1)
+            {
+                Console.WriteLine($"Name: {country.Name}, Population: {country.Population}");
+            }
+
+            Console.WriteLine("-----------------------------------------------");
+
+            var countries2 = await countryService.GetCountriesFromDataSourceTwo();
+
+            foreach (var country in countries2)
             {
                 Console.WriteLine($"Name: {country.Name}, Population: {country.Population}");
             }
