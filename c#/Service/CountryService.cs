@@ -77,5 +77,16 @@ GROUP BY co.CountryName
                 .ToList();
         }
 
+        public async Task<List<CountryDto>> GetCountriesAggregatedData()
+        {
+            var datasourceOneData = await GetCountriesFromDataSourceOne();
+            var datasourceTwoData = await GetCountriesFromDataSourceTwo();
+
+            return datasourceOneData
+                .Union(datasourceTwoData)
+                .OrderBy(c => c.Name)
+                .ToList();
+        }
+
     }
 }

@@ -15,18 +15,9 @@ namespace Backend
 
         public async Task Run()
         {
-            var countries1 = await countryService.GetCountriesFromDataSourceOne();
+            var countries = await countryService.GetCountriesAggregatedData();
 
-            foreach (var country in countries1)
-            {
-                Console.WriteLine($"Name: {country.Name}, Population: {country.Population}");
-            }
-
-            Console.WriteLine("-----------------------------------------------");
-
-            var countries2 = await countryService.GetCountriesFromDataSourceTwo();
-
-            foreach (var country in countries2)
+            foreach (var country in countries)
             {
                 Console.WriteLine($"Name: {country.Name}, Population: {country.Population}");
             }

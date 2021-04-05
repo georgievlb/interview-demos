@@ -9,5 +9,7 @@ namespace Backend.Service.Interfaces
         Task<List<CountryDto>> GetCountriesFromDataSourceOne();
 
         Task<List<CountryDto>> GetCountriesFromDataSourceTwo();
+
+        Task<List<CountryDto>> GetCountriesAggregatedData();
     }
 }
