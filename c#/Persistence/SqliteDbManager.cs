@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Backend.Persistence.Interfaces;
+using System;
 using System.Data.Common;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Backend
+namespace Backend.Persistence
 {
     public class SqliteDbManager : IDbManager
     {
@@ -14,7 +11,7 @@ namespace Backend
         {
             try
             {
-                var connection = new SQLiteConnection("Data Source=citystatecountry.db;Version=3;FailIfMissing=True");
+                var connection = new SQLiteConnection("Data Source=Persistence\\citystatecountry.db;Version=3;FailIfMissing=True");
                 return connection.OpenAndReturn();
             }
             catch(SQLiteException ex)
