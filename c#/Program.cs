@@ -1,24 +1,25 @@
-﻿using Backend.Persistence;
+﻿using Autofac;
+using Backend.Persistence;
 using Backend.Persistence.Interfaces;
-using System;
-using System.Data.Common;
+using Backend.Service;
+using Backend.Service.Interfaces;
 
 namespace Backend
 {
     class Program
     {
+        private static IContainer CompositeRoot()
+        {
+            var builder = new ContainerBuilder();
+            builder.RegisterType<Application>();
+            builder.RegisterType<SqliteDbManager>().As<IDbManager>();
+            builder.RegisterType<ConcreteStatService>().As<IStatService>();
+
+            return builder.Build();
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Started");
-            Console.WriteLine("Getting DB Connection...");
-
-            IDbManager db = new SqliteDbManager();
-            DbConnection conn = db.getConnection();
-
-            if(conn == null)
-            {
-                Console.WriteLine("Failed to get connection");
-            }
+            CompositeRoot().Resolve<Application>().Run();
         }
     }
 }
