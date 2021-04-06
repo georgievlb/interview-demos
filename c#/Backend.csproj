@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SQLite.Core.1.0.108.0\lib\net45\System.Data.SQLite.dll</HintPath>
@@ -66,32 +67,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
-    <Compile Include="Service\ConcreteStatService.cs" />
-    <Compile Include="Persistence\Interfaces\IDbManager.cs" />
-    <Compile Include="Service\CountryNameMappingService.cs" />
-    <Compile Include="Service\CountryService.cs" />
-    <Compile Include="Service\Interfaces\ICountryNameMappingService.cs" />
-    <Compile Include="Service\Interfaces\ICountryService.cs" />
-    <Compile Include="Service\Interfaces\IStatService.cs" />
+    <Compile Include="Application\Models\CountryModel.cs" />
+    <Compile Include="Application\Startup.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\CountriesIso3166.cs" />
+    <Compile Include="Domain\Country.cs" />
+    <Compile Include="Application\Services\ConcreteStatService.cs" />
+    <Compile Include="Application\Interfaces\IDbManager.cs" />
+    <Compile Include="Application\Services\CountryNameMappingService.cs" />
+    <Compile Include="Application\Services\CountryService.cs" />
+    <Compile Include="Application\Interfaces\ICountryNameMappingService.cs" />
+    <Compile Include="Application\Interfaces\ICountryService.cs" />
+    <Compile Include="Application\Interfaces\IStatService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persistence\SqliteDbManager.cs" />
-    <Compile Include="Service\Models\CountryDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Architecture.dgml" />
     <None Include="Persistence\citystatecountry.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Backend.Common\Backend.Common.csproj">
-      <Project>{13abc9fd-fcbe-44f6-a0c0-26094be8b8a5}</Project>
-      <Name>Backend.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

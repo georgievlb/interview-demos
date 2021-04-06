@@ -1,6 +1,6 @@
-﻿namespace Backend.Service.Models
+﻿namespace Backend.Domain
 {
-    public class CountryDto
+    public class Country
     {
         public string Name { get; set; }
 
@@ -8,7 +8,7 @@
 
         public override bool Equals(object obj)
         {
-            var other = obj as CountryDto;
+            var other = obj as Country;
 
             if (other == null)
             {

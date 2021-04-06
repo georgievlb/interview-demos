@@ -1,8 +1,8 @@
-﻿using Backend.Common.Countries;
-using Backend.Service.Interfaces;
+﻿using Backend.Application.Interfaces;
+using Backend.Common;
 using System.Collections.Generic;
 
-namespace Backend.Service
+namespace Backend.Application.Services
 {
     public class CountryNameMappingService : ICountryNameMappingService
     {

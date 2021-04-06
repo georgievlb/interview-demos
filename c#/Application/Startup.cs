@@ -1,14 +1,14 @@
-﻿using Backend.Service.Interfaces;
+﻿using Backend.Application.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace Backend
+namespace Backend.Application
 {
-    public class Application
+    public class Startup
     {
         private readonly ICountryService countryService;
 
-        public Application(ICountryService countryService)
+        public Startup(ICountryService countryService)
         {
             this.countryService = countryService;
         }

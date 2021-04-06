@@ -1,4 +1,4 @@
-﻿namespace Backend.Service.Interfaces
+﻿namespace Backend.Application.Interfaces
 {
     public interface ICountryNameMappingService
     {

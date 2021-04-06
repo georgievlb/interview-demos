@@ -1,19 +1,20 @@
 ﻿using Autofac;
+using Backend.Application;
+using Backend.Application.Interfaces;
+using Backend.Application.Services;
+using Backend.Domain;
 using Backend.Persistence;
-using Backend.Persistence.Interfaces;
-using Backend.Service;
-using Backend.Service.Interfaces;
 using System.Threading.Tasks;
 
 namespace Backend
 {
     class Program
     {
-        private static IContainer CompositeRoot()
+        private static IContainer BuildContainer()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<Application>();
-            builder.RegisterType<SqliteDbManager>().As<IDbManager>();
+            builder.RegisterType<Startup>();
+            builder.RegisterType<SqliteDbManager>().As<IDbManager<Country>>();
             builder.RegisterType<ConcreteStatService>().As<IStatService>();
             builder.RegisterType<CountryService>().As<ICountryService>();
             builder.RegisterType<CountryNameMappingService>().As<ICountryNameMappingService>();
@@ -22,7 +23,7 @@ namespace Backend
         }
         static async Task Main(string[] args)
         {
-            await CompositeRoot().Resolve<Application>().Run();
+            await BuildContainer().Resolve<Startup>().Run();
         }
     }
 }
