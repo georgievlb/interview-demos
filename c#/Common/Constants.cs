@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public const string connectionStringName = "SQLiteConnectionString";
+        public const string ConnectionStringName = "SQLiteConnectionString";
     }
 }

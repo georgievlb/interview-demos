@@ -16,7 +16,7 @@ namespace Backend.Persistence
         {
             try
             {
-                ConnectionStringSettings settings =  ConfigurationManager.ConnectionStrings[Constants.connectionStringName];
+                ConnectionStringSettings settings =  ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName];
 
                 return new SQLiteConnection(settings.ConnectionString);
 

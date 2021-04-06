@@ -72,6 +72,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\CountriesIso3166.cs" />
     <Compile Include="Common\Queries.cs" />
+    <Compile Include="Application\DependencyConfigurator.cs" />
     <Compile Include="Domain\Country.cs" />
     <Compile Include="Application\Services\ConcreteStatService.cs" />
     <Compile Include="Application\Interfaces\IDbManager.cs" />
