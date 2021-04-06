@@ -11,7 +11,7 @@ namespace Backend.Persistence
     {
         public async Task<IEnumerable<CountryAggregate>> GetCountriesAndPopulation()
         {
-              const string GetAllCountriesWithPopulation = @"
+            const string GetAllCountriesWithPopulationQuery = @"
 SELECT co.CountryId, co.CountryName, CAST(SUM(ci.Population) AS INT) AS CountryPopulation
 FROM Country co
     INNER JOIN State s
@@ -31,7 +31,7 @@ GROUP BY co.CountryName
                 await conn.OpenAsync();
 
                 var command = conn.CreateCommand();
-                command.CommandText = GetAllCountriesWithPopulation;
+                command.CommandText = GetAllCountriesWithPopulationQuery;
 
                 var reader = await command.ExecuteReaderAsync();
 

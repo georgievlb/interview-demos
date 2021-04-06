@@ -69,6 +69,30 @@ namespace Backend.UnitTests.ApplicationTests.Services
             Assert.AreNotEqual(populationFromDataSourceTwo.Item2, aggregateData.FirstOrDefault().Population);
         }
 
+        [Test]
+        public void ShouldThrowInvalidOperationException_WhenDataSourceOneReturnsNull()
+        {
+            Mock.Get(dbManager)
+            .Setup(d => d.GetCountriesAndPopulation())
+            .Throws<InvalidOperationException>();
+
+            Assert.That(async () => await countryService.GetCountriesAggregatedData(), 
+                Throws.Exception
+                .TypeOf<InvalidOperationException>());
+        }
+
+        [Test]
+        public void ShouldThrowInvalidOperationException_WhenDataSourceTwoReturnsNull()
+        {
+            Mock.Get(statService)
+            .Setup(s => s.GetCountryPopulationsAsync())
+            .Throws<InvalidOperationException>();
+
+            Assert.That(async () => await countryService.GetCountriesAggregatedData(),
+                Throws.Exception
+                .TypeOf<InvalidOperationException>());
+        }
+
         private static IEnumerable<CountryAggregate> CreateDatasetOne()
         {
             return new List<CountryAggregate>()

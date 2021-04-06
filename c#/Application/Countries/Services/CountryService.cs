@@ -22,17 +22,31 @@ namespace Backend.Application.Countries.Services
 
         public async Task<List<CountryAggregateModel>> GetCountriesAggregatedData()
         {
-            var datasourceOneDataRaw = await dbManager.GetCountriesAndPopulation();
-            var datasourceOneData = datasourceOneDataRaw
-                .Select(c => new CountryAggregateModel()
-                {
-                    Name = countryNameMappingService.MapCountryNameToIso3166(c.Country.CountryName),
-                    Population = c.Population
-                });
+            try
+            {
+                var dataSourceOneDataRaw = await dbManager.GetCountriesAndPopulation();
 
-            var datasourceTwoDataRaw = await statService.GetCountryPopulationsAsync();
-            var datasourceTwoData = datasourceTwoDataRaw
-                .Select((Tuple<string, int> c) =>
+                if (dataSourceOneDataRaw == null)
+                {
+                    throw new InvalidOperationException("An error occured while getting data from data source one.\n");
+                }
+
+                var dataSourceTwoDataRaw = await statService.GetCountryPopulationsAsync();
+
+                if (dataSourceTwoDataRaw == null)
+                {
+                    throw new InvalidOperationException("An error occured while getting data from data source two.\n");
+                }
+
+                var datasourceOneData = dataSourceOneDataRaw
+                    .Select(c => new CountryAggregateModel()
+                    {
+                        Name = countryNameMappingService.MapCountryNameToIso3166(c.Country.CountryName),
+                        Population = c.Population
+                    });
+
+                var datasourceTwoData = dataSourceTwoDataRaw
+                    .Select((Tuple<string, int> c) =>
                     {
                         var name = countryNameMappingService.MapCountryNameToIso3166(c.Item1);
                         var population = c.Item2;
@@ -42,15 +56,23 @@ namespace Backend.Application.Countries.Services
                             Name = name,
                             Population = population
                         };
-                    }
-                 )
-                .ToList();
+                    })
+                    .ToList();
 
-            return datasourceOneData
-                .Union(datasourceTwoData)
-                .Select(c => new CountryAggregateModel() { Name = c.Name, Population = c.Population })
-                .OrderBy(c => c.Name)
-                .ToList();
+                return datasourceOneData
+                    .Union(datasourceTwoData)
+                    .Select(c => new CountryAggregateModel() { Name = c.Name, Population = c.Population })
+                    .OrderBy(c => c.Name)
+                    .ToList();
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

@@ -15,11 +15,21 @@ namespace Backend.Application
 
         public async Task Run()
         {
-            var countries = await countryService.GetCountriesAggregatedData();
-
-            foreach (var country in countries)
+            try
             {
-                Console.WriteLine($"Name: {country.Name}, Population: {country.Population}");
+                var countries = await countryService.GetCountriesAggregatedData();
+
+                foreach (var country in countries)
+                {
+                    Console.WriteLine($"Name: {country.Name}, Population: {country.Population}");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"The following error occured: {ex.Message} at \n {ex.StackTrace}");
+                Console.WriteLine($"{ex.InnerException.Message} at \n {ex.InnerException.StackTrace}");
+                return;
             }
         }
     }
