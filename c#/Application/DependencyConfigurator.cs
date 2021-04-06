@@ -17,7 +17,7 @@ namespace Backend.Application
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<Startup>();
-            builder.RegisterType<SqliteDbManager>().As<IDbManager<CountryAggregate>>();
+            builder.RegisterType<CountryAggregateManager>().As<ICountryAggregateManager>();
             builder.RegisterType<ConcreteStatService>().As<IStatService>();
             builder.RegisterType<CountryService>().As<ICountryService>();
             builder.RegisterType<CountryNameMappingService>().As<ICountryNameMappingService>();

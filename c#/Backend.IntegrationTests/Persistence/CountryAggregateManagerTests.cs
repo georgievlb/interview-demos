@@ -1,7 +1,5 @@
 ﻿using Backend.Application.Countries.Interfaces;
 using Backend.Application.Countries.Models;
-using Backend.Common;
-using Backend.Domain.Countries;
 using Backend.Persistence;
 using NUnit.Framework;
 using System.Linq;
@@ -9,22 +7,20 @@ using System.Threading.Tasks;
 
 namespace Backend.IntegrationTests.Persistence
 {
-    public class SqliteDbManagerTests
+    public class CountryAggregateManagerTests
     {
-        private IDbManager<CountryAggregate> dbManager;
+        private ICountryAggregateManager dbManager;
 
         [SetUp]
         public void SetUpDependencies()
         {
-            dbManager = new SqliteDbManager();
+            dbManager = new CountryAggregateManager();
         }
 
         [Test]
         public async Task ShouldExecuteQuery()
         {
-            const string query = Queries.GetAllCountriesWithPopulation;
-
-            var countries = await dbManager.ExecuteQuery(query);
+            var countries = await dbManager.GetCountriesAndPopulation();
 
             Assert.IsNotEmpty(countries);
         }
@@ -32,10 +28,9 @@ namespace Backend.IntegrationTests.Persistence
         [Test]
         public async Task ShouldGetAllCountriesPopulation()
         {
-            const string Query = Queries.GetAllCountriesWithPopulation;
             const int CurrentNumberOfCountriesInTestDb = 16;
 
-            var countries = (await dbManager.ExecuteQuery(Query))
+            var countries = (await dbManager.GetCountriesAndPopulation())
                 .Select(c => new CountryAggregateModel()
                 {
                     Name = c.Country.CountryName,

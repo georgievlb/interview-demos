@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Data.Common;
-using System.Threading.Tasks;
+﻿using System.Data.Common;
 
 namespace Backend.Application.Countries.Interfaces
 {
-    public interface IDbManager<T> where T : class
+    public interface IDbManager
     {
         DbConnection GetConnection();
-
-        Task<IEnumerable<T>> ExecuteQuery(string query);
     }
 }

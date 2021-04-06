@@ -1,7 +1,5 @@
 ﻿using Backend.Application.Countries.Interfaces;
 using Backend.Application.Countries.Models;
-using Backend.Common;
-using Backend.Domain.Countries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +9,11 @@ namespace Backend.Application.Countries.Services
 {
     public class CountryService : ICountryService
     {
-        private readonly IDbManager<CountryAggregate> dbManager;
+        private readonly ICountryAggregateManager dbManager;
         private readonly ICountryNameMappingService countryNameMappingService;
         private readonly IStatService statService;
 
-        private const string query = Queries.GetAllCountriesWithPopulation;
-
-        public CountryService(IDbManager<CountryAggregate> dbManager, ICountryNameMappingService countryNameMappingService, IStatService statService)
+        public CountryService(ICountryAggregateManager dbManager, ICountryNameMappingService countryNameMappingService, IStatService statService)
         {
             this.dbManager = dbManager;
             this.countryNameMappingService = countryNameMappingService;
@@ -26,7 +22,7 @@ namespace Backend.Application.Countries.Services
 
         public async Task<List<CountryAggregateModel>> GetCountriesAggregatedData()
         {
-            var datasourceOneDataRaw = await dbManager.ExecuteQuery(query);
+            var datasourceOneDataRaw = await dbManager.GetCountriesAndPopulation();
             var datasourceOneData = datasourceOneDataRaw
                 .Select(c => new CountryAggregateModel()
                 {

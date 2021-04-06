@@ -14,7 +14,7 @@ namespace Backend.UnitTests.ApplicationTests.Services
     [TestFixture]
     public class CountryServiceTests
     {
-        private IDbManager<CountryAggregate> dbManager;
+        private ICountryAggregateManager dbManager;
         private ICountryNameMappingService countryNameMappingService;
         private IStatService statService;
         private ICountryService countryService;
@@ -22,16 +22,14 @@ namespace Backend.UnitTests.ApplicationTests.Services
         [SetUp]
         public void SetUpDependencies()
         {
-            dbManager = Mock.Of<IDbManager<CountryAggregate>>();
+            dbManager = Mock.Of<ICountryAggregateManager> ();
             countryNameMappingService = Mock.Of<ICountryNameMappingService>();
             statService = Mock.Of<IStatService>();
 
             countryService = new CountryService(dbManager, countryNameMappingService, statService);
 
-            const string query = Queries.GetAllCountriesWithPopulation;
-
             Mock.Get(dbManager)
-                .Setup(d => d.ExecuteQuery(query))
+                .Setup(d => d.GetCountriesAndPopulation())
                 .Returns(Task.FromResult(CreateDatasetOne()));
 
             Mock.Get(statService)
@@ -52,13 +50,10 @@ namespace Backend.UnitTests.ApplicationTests.Services
         [Test]
         public async Task ShouldAggregateData()
         {
-            // Arrange
             const int NumberOfAggregatedRecords = 10;
 
-            // Act
             var aggregatedData = await countryService.GetCountriesAggregatedData();
 
-            // Assert
             Assert.AreEqual(NumberOfAggregatedRecords, aggregatedData.Count);
         }
 
