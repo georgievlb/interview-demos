@@ -1,5 +1,4 @@
 ﻿using Backend.Application.Countries.Interfaces;
-using Backend.Application.Countries.Models;
 using Backend.Persistence;
 using NUnit.Framework;
 using System.Linq;
@@ -31,11 +30,6 @@ namespace Backend.IntegrationTests.Persistence
             const int CurrentNumberOfCountriesInTestDb = 16;
 
             var countries = (await dbManager.GetCountriesAndPopulation())
-                .Select(c => new CountryAggregateModel()
-                {
-                    Name = c.Country.CountryName,
-                    Population = c.Population
-                })
                 .ToList();
 
             Assert.AreEqual(CurrentNumberOfCountriesInTestDb, countries.Count);
