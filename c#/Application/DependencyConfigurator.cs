@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Extras.NLog;
 using Backend.Application.Countries.Interfaces;
 using Backend.Application.Countries.Services;
 using Backend.Domain.Countries;
@@ -21,6 +22,7 @@ namespace Backend.Application
             builder.RegisterType<ConcreteStatService>().As<IStatService>();
             builder.RegisterType<CountryService>().As<ICountryService>();
             builder.RegisterType<CountryNameMappingService>().As<ICountryNameMappingService>();
+            builder.RegisterModule<NLogModule>();
 
             return builder.Build();
         }

@@ -1,4 +1,5 @@
 ﻿using Backend.Application.Countries.Interfaces;
+using NLog;
 using System;
 using System.Threading.Tasks;
 
@@ -7,10 +8,12 @@ namespace Backend.Application
     public class Startup
     {
         private readonly ICountryService countryService;
+        private readonly ILogger logger;
 
-        public Startup(ICountryService countryService)
+        public Startup(ICountryService countryService, ILogger logger)
         {
             this.countryService = countryService;
+            this.logger = logger;
         }
 
         public async Task Run()
@@ -18,6 +21,7 @@ namespace Backend.Application
             try
             {
                 var countries = await countryService.GetCountriesAggregatedData();
+                logger.Info($"Called: {nameof(ICountryService)} with method {nameof(countryService.GetCountriesAggregatedData)}.");
 
                 foreach (var country in countries)
                 {
@@ -27,8 +31,9 @@ namespace Backend.Application
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"The following error occured: {ex.Message} at \n {ex.StackTrace}");
-                Console.WriteLine($"{ex.InnerException.Message} at \n {ex.InnerException.StackTrace}");
+                logger.Error($"Message: {ex.Message}\n{ex.StackTrace}\n");
+                Console.WriteLine($"An error has occured. Please check the application logs.");
+
                 return;
             }
         }

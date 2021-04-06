@@ -18,15 +18,13 @@ namespace Backend.Persistence
                 return new SQLiteConnection(settings.ConnectionString);
 
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
-                Console.WriteLine($"Connection string was not found. The error was: {ex.Message}");
-                return null;
+                throw;
             }
-            catch (SQLiteException ex)
+            catch (SQLiteException)
             {
-                Console.WriteLine(ex.Message);
-                return null;
+                throw;
             }
         }
     }

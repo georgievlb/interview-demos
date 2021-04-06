@@ -69,10 +69,6 @@ namespace Backend.Application.Countries.Services
             {
                 throw;
             }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
     }
