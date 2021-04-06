@@ -1,7 +1,7 @@
-﻿using Backend.Application.Interfaces;
-using Backend.Application.Models;
+﻿using Backend.Application.Countries.Interfaces;
+using Backend.Application.Countries.Models;
 using Backend.Common;
-using Backend.Domain;
+using Backend.Domain.Countries;
 using Backend.Persistence;
 using NUnit.Framework;
 using System.Linq;

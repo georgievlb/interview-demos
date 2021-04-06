@@ -67,21 +67,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Models\CountryAggregateModel.cs" />
+    <Compile Include="Application\Countries\Models\CountryAggregateModel.cs" />
     <Compile Include="Application\Startup.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\CountriesIso3166.cs" />
     <Compile Include="Common\Queries.cs" />
     <Compile Include="Application\DependencyConfigurator.cs" />
-    <Compile Include="Domain\Country.cs" />
-    <Compile Include="Application\Services\ConcreteStatService.cs" />
-    <Compile Include="Application\Interfaces\IDbManager.cs" />
-    <Compile Include="Application\Services\CountryNameMappingService.cs" />
-    <Compile Include="Application\Services\CountryService.cs" />
-    <Compile Include="Application\Interfaces\ICountryNameMappingService.cs" />
-    <Compile Include="Application\Interfaces\ICountryService.cs" />
-    <Compile Include="Application\Interfaces\IStatService.cs" />
-    <Compile Include="Domain\CountryAggregate.cs" />
+    <Compile Include="Domain\Countries\Country.cs" />
+    <Compile Include="Application\Countries\Services\ConcreteStatService.cs" />
+    <Compile Include="Application\Countries\Interfaces\IDbManager.cs" />
+    <Compile Include="Application\Countries\Services\CountryNameMappingService.cs" />
+    <Compile Include="Application\Countries\Services\CountryService.cs" />
+    <Compile Include="Application\Countries\Interfaces\ICountryNameMappingService.cs" />
+    <Compile Include="Application\Countries\Interfaces\ICountryService.cs" />
+    <Compile Include="Application\Countries\Interfaces\IStatService.cs" />
+    <Compile Include="Domain\Countries\CountryAggregate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persistence\SqliteDbManager.cs" />

@@ -1,4 +1,4 @@
-﻿namespace Backend.Application.Models
+﻿namespace Backend.Application.Countries.Models
 {
     public class CountryAggregateModel
     {

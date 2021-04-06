@@ -1,7 +1,7 @@
-﻿using Backend.Application.Interfaces;
-using Backend.Application.Services;
+﻿using Backend.Application.Countries.Interfaces;
+using Backend.Application.Countries.Services;
 using Backend.Common;
-using Backend.Domain;
+using Backend.Domain.Countries;
 using Moq;
 using NUnit.Framework;
 using System;

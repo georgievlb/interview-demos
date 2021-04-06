@@ -1,6 +1,6 @@
-﻿using Backend.Application.Interfaces;
+﻿using Backend.Application.Countries.Interfaces;
 using Backend.Common;
-using Backend.Domain;
+using Backend.Domain.Countries;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

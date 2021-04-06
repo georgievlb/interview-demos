@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Backend.Application.Interfaces
+namespace Backend.Application.Countries.Interfaces
 {
     public interface IStatService
     {

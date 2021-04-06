@@ -1,13 +1,13 @@
-﻿using Backend.Application.Interfaces;
-using Backend.Application.Models;
+﻿using Backend.Application.Countries.Interfaces;
+using Backend.Application.Countries.Models;
 using Backend.Common;
-using Backend.Domain;
+using Backend.Domain.Countries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Backend.Application.Services
+namespace Backend.Application.Countries.Services
 {
     public class CountryService : ICountryService
     {
@@ -30,7 +30,6 @@ namespace Backend.Application.Services
             var datasourceOneData = datasourceOneDataRaw
                 .Select(c => new CountryAggregateModel()
                 {
-                    //CountryId = c.Country.CountryId,
                     Name = countryNameMappingService.MapCountryNameToIso3166(c.Country.CountryName),
                     Population = c.Population
                 });

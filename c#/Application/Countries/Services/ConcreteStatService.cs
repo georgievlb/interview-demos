@@ -1,9 +1,9 @@
-﻿using Backend.Application.Interfaces;
+﻿using Backend.Application.Countries.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Backend.Application.Services
+namespace Backend.Application.Countries.Services
 {
     public class ConcreteStatService : IStatService
     {

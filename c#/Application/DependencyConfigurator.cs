@@ -1,7 +1,7 @@
 ﻿using Autofac;
-using Backend.Application.Interfaces;
-using Backend.Application.Services;
-using Backend.Domain;
+using Backend.Application.Countries.Interfaces;
+using Backend.Application.Countries.Services;
+using Backend.Domain.Countries;
 using Backend.Persistence;
 
 namespace Backend.Application
@@ -12,6 +12,7 @@ namespace Backend.Application
         {
             return BuildContainer();
         }
+
         private static IContainer BuildContainer()
         {
             var builder = new ContainerBuilder();
