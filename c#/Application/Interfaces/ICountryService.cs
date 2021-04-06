@@ -6,6 +6,6 @@ namespace Backend.Application.Interfaces
 {
     public interface ICountryService
     {
-        Task<List<CountryModel>> GetCountriesAggregatedData();
+        Task<List<CountryAggregateModel>> GetCountriesAggregatedData();
     }
 }

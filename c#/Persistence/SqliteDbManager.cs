@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Backend.Persistence
 {
-    public class SqliteDbManager : IDbManager<Country>
+    public class SqliteDbManager : IDbManager<CountryAggregate>
     {
         public DbConnection GetConnection()
         {
             try
             {
-                ConnectionStringSettings settings =  ConfigurationManager.ConnectionStrings[Constants.connectionString];
+                ConnectionStringSettings settings =  ConfigurationManager.ConnectionStrings[Constants.connectionStringName];
 
                 return new SQLiteConnection(settings.ConnectionString);
 
@@ -33,9 +33,9 @@ namespace Backend.Persistence
             }
         }
 
-        public async Task<IEnumerable<Country>> ExecuteQuery(string query)
+        public async Task<IEnumerable<CountryAggregate>> ExecuteQuery(string query)
         {
-            using (DbConnection conn = GetConnection())
+            using (DbConnection conn = this.GetConnection())
             {
                 if (conn == null)
                 {
@@ -49,14 +49,14 @@ namespace Backend.Persistence
 
                 var reader = await command.ExecuteReaderAsync();
 
-                var countries = new List<Country>();
+                var countries = new List<CountryAggregate>();
 
                 while (await reader.ReadAsync())
                 {
-                    countries.Add(new Country
+                    countries.Add(new CountryAggregate
                     {
-                        Name = reader.GetString(0),
-                        Population = reader.GetInt64(1)
+                        Country = new Country() { CountryId = reader.GetInt32(0), CountryName = reader.GetString(1) },
+                        Population = reader.GetInt64(2)
                     });
                 }
 
