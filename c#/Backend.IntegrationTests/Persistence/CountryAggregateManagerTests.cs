@@ -1,7 +1,10 @@
 ﻿using Backend.Application.Countries.Interfaces;
 using Backend.Persistence;
 using NUnit.Framework;
+using System;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Backend.IntegrationTests.Persistence
@@ -9,6 +12,15 @@ namespace Backend.IntegrationTests.Persistence
     public class CountryAggregateManagerTests
     {
         private ICountryAggregateManager dbManager;
+
+        [OneTimeSetUp]
+        public void SetUpBaseDirectory()
+        {
+            // When executing the integration tests, the current directory changes to C:\Users\<USER>\AppData\Local\Temp
+            var assemblyDir = AppDomain.CurrentDomain.BaseDirectory;
+            Directory.SetCurrentDirectory(assemblyDir);
+            Environment.CurrentDirectory = assemblyDir;
+        }
 
         [SetUp]
         public void SetUpDependencies()
